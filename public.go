@@ -2,7 +2,6 @@ package metascraper
 
 import (
 	"io"
-	"io/ioutil"
 	"net/http"
 )
 
@@ -21,7 +20,7 @@ func Scrape(url string) (*Page, error) {
 		return p, err
 	}
 	defer resp.Body.Close()
-	htmlBytes, err := ioutil.ReadAll(resp.Body)
+	htmlBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return p, err
 	}

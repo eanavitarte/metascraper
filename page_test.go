@@ -1,9 +1,10 @@
 package metascraper
 
 import (
-	"github.com/kylelemons/godebug/pretty"
 	"reflect"
 	"testing"
+
+	"github.com/kylelemons/godebug/pretty"
 )
 
 // sampled from https://schema.org/docs/gs.html and http://ogp.me/
@@ -51,89 +52,89 @@ const testPage = `
 `
 
 var meta = []*Meta{
-	&Meta{
+	{
 		Property: "og:title",
 		Content:  "The Rock",
 	},
-	&Meta{
+	{
 		Property: "og:type",
 		Content:  "video.movie",
 	},
-	&Meta{
+	{
 		Property: "og:url",
 		Content:  "http://www.imdb.com/title/tt0117500/",
 	},
-	&Meta{
+	{
 		Property: "og:image",
 		Content:  "http://example.com/rock.jpg",
 		Extra: []*Meta{
-			&Meta{
+			{
 				Property: "og:image:width",
 				Content:  "300",
 			},
-			&Meta{
+			{
 				Property: "og:image:height",
 				Content:  "300",
 			},
 		},
 	},
-	&Meta{
+	{
 		Property: "og:image",
 		Content:  "http://example.com/rock2.jpg",
 	},
-	&Meta{
+	{
 		Property: "og:image",
 		Content:  "http://example.com/rock3.jpg",
 		Extra: []*Meta{
-			&Meta{
+			{
 				Property: "og:image:height",
 				Content:  "1000",
 			},
 		},
 	},
-	&Meta{
+	{
 		Name:    "keywords",
 		Content: "a,b,c",
 	},
-	&Meta{
+	{
 		Name:    "unusual",
 		Content: "special",
 	},
 }
 
 var schema = []*ItemScope{
-	&ItemScope{
+	{
 		TagName:  "div",
 		ItemType: "http://schema.org/Offer",
 		Props: []*ItemProp{
-			&ItemProp{
+			{
 				TagName:  "span",
 				ItemProp: "name",
 				Content:  "Blend-O-Matic",
 			},
-			&ItemProp{
+			{
 				TagName:  "span",
 				ItemProp: "price",
 				Content:  "$19.95",
 			},
 		},
 		Children: []*ItemScope{
-			&ItemScope{
+			{
 				TagName:  "div",
 				ItemType: "http://schema.org/AggregateRating",
 				ItemProp: "reviews",
 				Props: []*ItemProp{
-					&ItemProp{
+					{
 						TagName:  "meta",
 						ItemProp: "ratingValue",
 						Content:  "4",
 					},
-					&ItemProp{
+					{
 						TagName:  "meta",
 						ItemProp: "bestRating",
 						Content:  "5",
 					},
-					&ItemProp{
+					{
 						TagName:  "span",
 						ItemProp: "ratingCount",
 						Content:  "25",
@@ -142,21 +143,21 @@ var schema = []*ItemScope{
 			},
 		},
 	},
-	&ItemScope{
+	{
 		TagName:  "div",
 		ItemType: "http://schema.org/Event",
 		Props: []*ItemProp{
-			&ItemProp{
+			{
 				TagName:  "div",
 				ItemProp: "name",
 				Content:  "Spinal Tap",
 			},
-			&ItemProp{
+			{
 				TagName:  "span",
 				ItemProp: "description",
 				Content:  `One of the loudest bands ever reunites for an unforgettable two-day show.`,
 			},
-			&ItemProp{
+			{
 				TagName:  "time",
 				ItemProp: "startDate",
 				DateTime: "2011-05-08T19:30",
@@ -164,11 +165,11 @@ var schema = []*ItemScope{
 			},
 		},
 	},
-	&ItemScope{
+	{
 		TagName:  "div",
 		ItemType: "http://schema.org/Person",
 		Props: []*ItemProp{
-			&ItemProp{
+			{
 				TagName:  "a",
 				ItemProp: "url",
 				HREF:     "alice.html",
@@ -176,11 +177,11 @@ var schema = []*ItemScope{
 			},
 		},
 	},
-	&ItemScope{
+	{
 		TagName:  "div",
 		ItemType: "http://schema.org/Person",
 		Props: []*ItemProp{
-			&ItemProp{
+			{
 				TagName:  "a",
 				ItemProp: "url",
 				HREF:     "bob.html",
